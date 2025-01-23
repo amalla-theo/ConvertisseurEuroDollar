@@ -9,7 +9,7 @@
    <children>
       <TextField fx:id="textField_Dollar" layoutX="50.0" layoutY="212.0" prefHeight="45.0" prefWidth="300.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
       <TextField fx:id="textField_Euro" layoutX="50.0" layoutY="38.0" prefHeight="45.0" prefWidth="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="38.0" />
-      <Button fx:id="button_Convertisseur" layoutX="283.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" text="Convertion" textAlignment="CENTER">
+      <Button id="button_Convertisseur" fx:id="button_Convertisseur" layoutX="304.0" layoutY="112.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="82.0" stylesheets="@../../../../../css/bouton.css" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Italic" size="12.0" />
          </font>

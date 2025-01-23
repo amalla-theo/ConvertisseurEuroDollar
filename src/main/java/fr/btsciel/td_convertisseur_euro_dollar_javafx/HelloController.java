@@ -29,6 +29,10 @@ public class HelloController implements Initializable {
 
             if (euro.length()>=1){
                 textField_Dollar.setText(df.format(Double.parseDouble(euro)* taux));
+                textField_Dollar.setDisable(false);
+            } else {
+                textField_Dollar.setText("Veuillez entrer une valeur :)");
+                textField_Dollar.setDisable(true);
             }
         });
     }
