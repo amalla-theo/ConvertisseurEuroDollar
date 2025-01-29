@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.btsciel.td_convertisseur_euro_dollar_javafx.HelloController">
    <children>
       <TextField fx:id="textField_Dollar" layoutX="50.0" layoutY="212.0" prefHeight="45.0" prefWidth="300.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
       <TextField fx:id="textField_Euro" layoutX="50.0" layoutY="38.0" prefHeight="45.0" prefWidth="300.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="38.0" />
-      <Button id="button_Convertisseur" fx:id="button_Convertisseur" layoutX="304.0" layoutY="112.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="82.0" stylesheets="@../../../../../css/bouton.css" textAlignment="CENTER">
+      <Button id="button_Convertisseur" fx:id="button_Convertisseur" layoutX="167.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="67.0" stylesheets="@css/bouton.css" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Italic" size="12.0" />
          </font>
       </Button>
+      <RadioButton fx:id="rbEuroDollar" layoutX="290.0" layoutY="111.0" mnemonicParsing="false" selected="true" text="€ --&gt; $">
+         <toggleGroup>
+            <ToggleGroup fx:id="rb" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbDollarEuro" layoutX="290.0" layoutY="150.0" mnemonicParsing="false" text="\$ --&gt; €" toggleGroup="$rb" />
+      <Text layoutX="56.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="53.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
