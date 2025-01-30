@@ -15,7 +15,7 @@ public class HelloController implements Initializable {
     public TextField textField_Euro;
     public TextField textField_Dollar;
     public Button button_Convertisseur;
-    public double taux = 1.02;
+    public double taux = 1.04;
     public RadioButton rbEuroDollar;
     public RadioButton rbDollarEuro;
     public RotateTransition rotation;
@@ -27,7 +27,7 @@ public class HelloController implements Initializable {
         textField_Dollar.setDisable(true);
         textField_Euro.setEditable(true);
         textField_Euro.setDisable(false);
-        rotation = new RotateTransition(Duration.seconds(0.5), button_Convertisseur);
+        rotation = new RotateTransition(Duration.seconds(0.25), button_Convertisseur);
 
         rbEuroDollar.setOnAction(event ->rbEuroDollar());
         rbDollarEuro.setOnAction(event -> rbDollarEuro());
