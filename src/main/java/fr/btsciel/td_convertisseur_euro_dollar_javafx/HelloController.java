@@ -1,96 +1,61 @@
 package fr.btsciel.td_convertisseur_euro_dollar_javafx;
 
-import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.Duration;
 
-import javax.swing.*;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
-    public TextField textField_Euro;
-    public TextField textField_Dollar;
     public Button button_Convertisseur;
-    public double taux = 1.04;
-    public RadioButton rbEuroDollar;
-    public RadioButton rbDollarEuro;
-    public RotateTransition rotation;
-
+    public Label label_Init;
+    public Label label_Final;
+    public double taux_Euro_DollarUS = 1.04;
+    public TextField tf_Init;
+    public TextField tf_Final;
+    public ComboBox comboSelection;
+    private ArrayList <ModIHM> conversionDevise = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textField_Dollar.setEditable(false);
-        textField_Dollar.setDisable(true);
-        textField_Euro.setEditable(true);
-        textField_Euro.setDisable(false);
-        rotation = new RotateTransition(Duration.seconds(0.25), button_Convertisseur);
+        fabriquerDonnees();
 
-        rbEuroDollar.setOnAction(event ->rbEuroDollar());
-        rbDollarEuro.setOnAction(event -> rbDollarEuro());
+        tf_Init.setEditable(false);
+        tf_Final.setDisable(true);
+        tf_Init.setEditable(true);
+        tf_Final.setDisable(false);
+
         button_Convertisseur.setOnAction(event -> {Convertir();});
 
+    }
+
+    private void fabriquerDonnees(){
+        conversionDevise.add(new ModIHM("Euro --> Dollar US", "Euro", "Dollar", taux_Euro_DollarUS));
 
 
 
+        conversionDevise.forEach(element -> comboSelection.getItems().add(element.getPrompt()));
     }
 
     private void Convertir() {
         DecimalFormat df = new DecimalFormat("0.00");
 
         try {
-            if (rbEuroDollar.isSelected()) {
-                String euro = textField_Euro.getText().replace(",",".");
-                try {
-                    if (euro.length()>=1){
-                        textField_Dollar.setText(df.format(Double.parseDouble(euro)* taux));
-                    }
-                }catch (NumberFormatException e){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alerteFormat();
+            String euro = tf_Init.getText().replace(",",".");
+            try {
+                if (euro.length()>=1){
+                    tf_Final.setText(df.format(Double.parseDouble(euro)* taux_Euro_DollarUS));
                 }
-
-            }else if (rbDollarEuro.isSelected()) {
-
-                String dollar = textField_Dollar.getText().replace(",",".");
-
-                try {
-                    if (dollar.length()>=1){
-                        textField_Euro.setText(df.format(Double.parseDouble(dollar)/ taux));
-
-                    }
-                }catch (NumberFormatException e){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alerteFormat();
-                }
-
-
+            }catch (NumberFormatException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alerteFormat();
             }
         }catch (NumberFormatException e){}
     }
 
-    private void rbEuroDollar() {
-        rotation.setByAngle(-180);
-        rotation.play();
-        textField_Dollar.setEditable(false);
-        textField_Dollar.setDisable(true);
-        textField_Euro.setEditable(true);
-        textField_Euro.setDisable(false);
-        textField_Dollar.clear();
-    }
-
-    private void rbDollarEuro() {
-        rotation.setByAngle(180);
-        rotation.play();
-        textField_Dollar.setEditable(true);
-        textField_Dollar.setDisable(false);
-        textField_Euro.setEditable(false);
-        textField_Euro.setDisable(true);
-        textField_Euro.clear();
-    }
 
     public void alerteFormat(){
         Alert alert = new Alert(Alert.AlertType.WARNING);
